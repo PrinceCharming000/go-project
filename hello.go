@@ -6,6 +6,15 @@ import (
 	"time"
 )
 
+type Animal struct {
+	Name string
+	Age  uint
+}
+
+func (a Animal) String() string {
+	return fmt.Sprintf("%v (%d)", a.Name, a.Age)
+}
+
 func main() {
 	// fmt.Println("Hello World!")
 
@@ -41,4 +50,18 @@ func main() {
 	fmt.Print("The vector (", a, b, ") has length ", h, ".\n")
 
 	fmt.Printf("The vector (%g %g) has length %g.\n", a, b, h)
+
+	animal := Animal{
+		Name: "Gorilla",
+		Age:  2,
+	}
+	fmt.Println(animal)
+
+	var name string
+	var age int
+	n, err := fmt.Sscanf("Kim is 22 years old", "%s is %d years old", &name, &age)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%d: %s, %d\n", n, name, age)
 }
